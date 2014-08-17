@@ -122,20 +122,23 @@
 	tree.setSkin('dhx_skyblue');
 	tree.setImagePath("${contextPath}/mss/image/dhtml/csh_bluebooks/");
 	tree.enableCheckBoxes(1);
+	tree.enableThreeStateCheckboxes(true);
 	tree.setOnOpenHandler(show);
 	
 	function combineGoodsType(){
-		var checkedItemIds = tree.getAllChecked();
+		//var checkedItemIds = tree.getAllChecked();
+		var checkedItemIds = tree.getAllCheckedBranches();
 		var itemIdArray = checkedItemIds.split('\,');
 		var goodsName = "";
 		var goodsType = "";
 		len = itemIdArray.length;
 		for(i=0;i<len;i++){
+			if(itemIdArray[i].length>=4&&itemIdArray[i].substring(0,4)=='temp'){
+				continue;
+			}
 			itemText = convertBack(tree.getItemText(itemIdArray[i]));
 			shortName = tree.getUserData(itemIdArray[i],'shortName'+itemIdArray[i]);
-			if(i<3){
-				goodsName += itemText;
-			}
+			goodsName += itemText;
 			goodsType += itemText;
 			if(i<len-1){
 				goodsType += ',';

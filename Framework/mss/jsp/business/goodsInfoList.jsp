@@ -31,7 +31,7 @@
 		}
 		
 		function selectGoodsType(){
-			var url = "/mss/jsp/business/goodsTypeController.do?method=queryGoodsTypeList&accessType=selectTypeByTree&perPageCount=0";
+			var url = "${contextPath }/mss/jsp/business/goodsTypeController.do?method=queryGoodsTypeList&accessType=selectTypeByTree&perPageCount=0";
 			window.open(url,'','toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=600, height=400,top=100,left=100');
 		}
 		function addGoodsInfo(){

@@ -348,16 +348,12 @@
 			}
 			itemText = convertBack(tree.getItemText(itemIdArray[i]));
 			shortName = tree.getUserData(itemIdArray[i],'shortName'+itemIdArray[i]);
-			if(i<6){
-				goodsName += itemText;
+			goodsName += itemText;
+			goodsTypeCheck += itemText;
+			if(i<(len-1)){
+				goodsTypeCheck += ",";
 			}
-			if(i<6){
-				goodsTypeCheck += itemText;
-				if(i<5){
-					goodsTypeCheck += ",";
-				}
-				goodsCode += shortName;
-			}
+			goodsCode += shortName;
 			goodsType += itemText;
 			if(i<len-1){
 				goodsType += ',';

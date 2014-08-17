@@ -14,13 +14,13 @@
 		<script type="text/javascript" src="${contextPath}/mss/js/ajax.js"></script>
 		<script type="text/javascript">
 		function selectGoods(){
-			var url = "/mss/jsp/business/goodsInfoController.do?method=queryGoodsInfoList&accessType=sel&queryTypeState=A&selectType=outRecord";
-			window.open(url,'','toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=600, height=400,top=100,left=100');
+			var url = "${contextPath}/mss/jsp/business/goodsInfoController.do?method=queryGoodsInfoList&accessType=sel&queryTypeState=A&selectType=outRecord";
+			window.open(url,'','toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=800, height=400,top=100,left=100');
 		}
 		
 		function selectClient(){
-			var url = "/mss/jsp/business/clientInfoController.do?method=queryClientInfoList&accessType=sel&queryTypeState=A";
-			window.open(url,'','toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=600, height=400,top=100,left=100');
+			var url = "${contextPath}/mss/jsp/business/clientInfoController.do?method=queryClientInfoList&accessType=sel&queryTypeState=A";
+			window.open(url,'','toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=800, height=400,top=100,left=100');
 		}
 		
 		function reverseSet(flag){

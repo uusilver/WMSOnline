@@ -1,13 +1,12 @@
 package com.xwtech.mss.controller;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import net.sf.json.JSONArray;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -245,9 +244,9 @@ public class GoodsRecordController extends MultiActionController {
 						goodsRecord.setTypeNum(goodsTypeNums[i]);
 						goodsRecord.setRecordType(new Long(SpmsConstants.IN_RECORD));
 						goodsRecord.setRecordState(SpmsConstants.RECORD_FINISHED);
-						goodsRecord.setSalePrice(new Double(salePrices[i]));
+						goodsRecord.setSalePrice(new BigDecimal(salePrices[i]));
 						goodsRecord.setGoodsCount(new Long(goodsCounts[i]));
-						goodsRecord.setGoodsProfit(new Long(goodsCounts[i])*new Double(salePrices[i]));
+						goodsRecord.setGoodsProfit(new BigDecimal(salePrices[i]).multiply(new BigDecimal(goodsCounts[i])));
 						goodsRecord.setRecordComm(recordComments[i]);
 						goodsRecord.setOperator(userId);
 						goodsRecord.setUserName(userName);
@@ -430,7 +429,7 @@ public class GoodsRecordController extends MultiActionController {
 								//计算结余库存
 								goodsInfo.setGoodsCount(goodsInfo.getGoodsCount() - counts);
 								//计算利润
-								goodsRecord.setGoodsProfit(new Integer(goodsCount)*(new Double(salePrice) - goodsInfo.getGoodsPrice()));
+								goodsRecord.setGoodsProfit(new BigDecimal(goodsCount).multiply(new BigDecimal(salePrice).subtract(goodsInfo.getGoodsPrice())));
 							}
 						}
 						//当出库量<原出库量，库存量 + 差值
@@ -443,7 +442,7 @@ public class GoodsRecordController extends MultiActionController {
 							//计算结余库存
 							goodsInfo.setGoodsCount(goodsInfo.getGoodsCount() + counts);
 							//计算利润
-							goodsRecord.setGoodsProfit(new Integer(goodsCount)*(new Double(salePrice) - goodsInfo.getGoodsPrice()));
+							goodsRecord.setGoodsProfit(new BigDecimal(goodsCount).multiply(new BigDecimal(salePrice).subtract(goodsInfo.getGoodsPrice())));
 
 						}
 							goodsInfo.setModifyTime(DateUtils.getChar12());
@@ -455,23 +454,23 @@ public class GoodsRecordController extends MultiActionController {
 								goodsRecord.setClientConfirm("Y");
 								
 								//计算最终利润
-								goodsRecord.setFinalProfit(new Integer(goodsCount)*(new Double(finalPayPrice) - goodsInfo.getGoodsPrice()));
+								goodsRecord.setFinalProfit(new BigDecimal(goodsCount).multiply(new BigDecimal(finalPayPrice).subtract(goodsInfo.getGoodsPrice())));
 								
 								//确认付款时间
 								goodsRecord.setPayTime(payTime);
 								
 								//最终付款单价
-								goodsRecord.setFinalPayPrice(new Double(finalPayPrice));
+								goodsRecord.setFinalPayPrice(new BigDecimal(finalPayPrice));
 							}else{
 								
 								//用户未付款
 								goodsRecord.setClientConfirm("N");
 								
 								//计算最终利润
-								goodsRecord.setFinalProfit(new Double(0));
+								goodsRecord.setFinalProfit(new BigDecimal(0));
 								
 								//最终付款单价
-								goodsRecord.setFinalPayPrice(new Double(0));
+								goodsRecord.setFinalPayPrice(new BigDecimal(0));
 							}
 					}
 					
@@ -523,7 +522,7 @@ public class GoodsRecordController extends MultiActionController {
 							}
 						}
 						//计算退款金额(负利润)
-						goodsRecord.setGoodsProfit(new Long(goodsCount)* (new Double(salePrice) - goodsInfo.getGoodsPrice()));
+						goodsRecord.setGoodsProfit(new BigDecimal(goodsCount).multiply(new BigDecimal(salePrice).subtract(goodsInfo.getGoodsPrice())));
 
 						//根据用户最终付款单价计算销售利润
 						if(clientConfirm!=null&&"Y".equals(clientConfirm)){
@@ -531,23 +530,23 @@ public class GoodsRecordController extends MultiActionController {
 							goodsRecord.setClientConfirm("Y");
 							
 							//计算最终利润
-							goodsRecord.setFinalProfit(new Long(goodsCount)*(new Double(finalPayPrice) - goodsInfo.getGoodsPrice()));
+							goodsRecord.setFinalProfit(new BigDecimal(goodsCount).multiply(new BigDecimal(finalPayPrice).subtract(goodsInfo.getGoodsPrice())));
 							
 							//确认付款时间
 							goodsRecord.setPayTime(payTime);
 							
 							//最终付款单价
-							goodsRecord.setFinalPayPrice(new Double(finalPayPrice));
+							goodsRecord.setFinalPayPrice(new BigDecimal(finalPayPrice));
 						}else{
 							
 							//用户未付款
 							goodsRecord.setClientConfirm("N");
 							
 							//计算最终利润
-							goodsRecord.setFinalProfit(new Double(0));
+							goodsRecord.setFinalProfit(new BigDecimal(0));
 							
 							//最终付款单价
-							goodsRecord.setFinalPayPrice(new Double(0));
+							goodsRecord.setFinalPayPrice(new BigDecimal(0));
 						}
 						
 					}
@@ -565,7 +564,7 @@ public class GoodsRecordController extends MultiActionController {
 						goodsRecord.setGoodsCode(goodsCode);
 						goodsRecord.setTypeNum(goodsTypeNum);
 						goodsRecord.setRecordState(recordState);
-						goodsRecord.setSalePrice(new Double(salePrice));
+						goodsRecord.setSalePrice(new BigDecimal(salePrice));
 						goodsRecord.setGoodsCount(new Long(goodsCount));
 						goodsRecord.setCurrentCount(new Integer(currentCount));
 						goodsRecord.setRecordComm(recordComment);
@@ -791,7 +790,7 @@ public class GoodsRecordController extends MultiActionController {
 								//计算结余库存
 								goodsInfo.setGoodsCount(goodsInfo.getGoodsCount() - counts);
 								//计算利润
-								goodsRecord.setGoodsProfit(new Integer(goodsCount)*(new Double(salePrice) - goodsInfo.getGoodsPrice()));
+								goodsRecord.setGoodsProfit(new BigDecimal(goodsCount).multiply(new BigDecimal(salePrice).subtract(goodsInfo.getGoodsPrice())));
 							}
 						}
 						//当出库量<原出库量，库存量 + 差值
@@ -804,7 +803,7 @@ public class GoodsRecordController extends MultiActionController {
 							//计算结余库存
 							goodsInfo.setGoodsCount(goodsInfo.getGoodsCount() + counts);
 							//计算利润
-							goodsRecord.setGoodsProfit(new Integer(goodsCount)*(new Double(salePrice) - goodsInfo.getGoodsPrice()));
+							goodsRecord.setGoodsProfit(new BigDecimal(goodsCount).multiply(new BigDecimal(salePrice).subtract(goodsInfo.getGoodsPrice())));
 						}
 							goodsInfo.setModifyTime(DateUtils.getChar12());
 							
@@ -815,23 +814,23 @@ public class GoodsRecordController extends MultiActionController {
 								goodsRecord.setClientConfirm("Y");
 								
 								//计算最终利润
-								goodsRecord.setFinalProfit(new Long(goodsCount)*(new Double(finalPayPrice) - goodsInfo.getGoodsPrice()));
+								goodsRecord.setFinalProfit(new BigDecimal(goodsCount).multiply(new BigDecimal(finalPayPrice).subtract(goodsInfo.getGoodsPrice())));
 								
 								//确认付款时间
 								goodsRecord.setPayTime(payTime);
 								
 								//最终付款单价
-								goodsRecord.setFinalPayPrice(new Double(finalPayPrice));
+								goodsRecord.setFinalPayPrice(new BigDecimal(finalPayPrice));
 							}else{
 								
 								//用户未付款
 								goodsRecord.setClientConfirm("N");
 								
 								//计算最终利润
-								goodsRecord.setFinalProfit(new Double(0));
+								goodsRecord.setFinalProfit(new BigDecimal(0));
 								
 								//最终付款单价
-								goodsRecord.setFinalPayPrice(new Double(0));
+								goodsRecord.setFinalPayPrice(new BigDecimal(0));
 							}
 					}
 					
@@ -878,7 +877,7 @@ public class GoodsRecordController extends MultiActionController {
 							}
 						}
 						//计算退款金额
-						goodsRecord.setGoodsProfit(new Long(goodsCount)* (new Double(salePrice) - goodsInfo.getGoodsPrice()));
+						goodsRecord.setGoodsProfit(new BigDecimal(goodsCount).multiply(new BigDecimal(salePrice).subtract(goodsInfo.getGoodsPrice())));
 						
 						//根据用户最终付款单价计算销售利润
 						if(clientConfirm!=null&&"Y".equals(clientConfirm)){
@@ -886,23 +885,23 @@ public class GoodsRecordController extends MultiActionController {
 							goodsRecord.setClientConfirm("Y");
 							
 							//计算最终利润
-							goodsRecord.setFinalProfit(new Long(goodsCount)*(new Double(finalPayPrice) - goodsInfo.getGoodsPrice()));
+							goodsRecord.setFinalProfit(new BigDecimal(goodsCount).multiply(new BigDecimal(finalPayPrice).subtract(goodsInfo.getGoodsPrice())));
 							
 							//确认付款时间
 							goodsRecord.setPayTime(payTime);
 							
 							//最终付款单价
-							goodsRecord.setFinalPayPrice(new Double(finalPayPrice));
+							goodsRecord.setFinalPayPrice(new BigDecimal(finalPayPrice));
 						}else{
 							
 							//用户未付款
 							goodsRecord.setClientConfirm("N");
 							
 							//计算最终利润
-							goodsRecord.setFinalProfit(new Double(0));
+							goodsRecord.setFinalProfit(new BigDecimal(0));
 							
 							//最终付款单价
-							goodsRecord.setFinalPayPrice(new Double(0));
+							goodsRecord.setFinalPayPrice(new BigDecimal(0));
 						}
 					}
 
@@ -919,7 +918,7 @@ public class GoodsRecordController extends MultiActionController {
 						goodsRecord.setGoodsCode(goodsCode);
 						goodsRecord.setTypeNum(goodsTypeNum);
 						goodsRecord.setRecordState(recordState);
-						goodsRecord.setSalePrice(new Double(salePrice));
+						goodsRecord.setSalePrice(new BigDecimal(salePrice));
 						goodsRecord.setGoodsCount(new Long(goodsCount));
 						goodsRecord.setCurrentCount(new Integer(currentCount));
 						goodsRecord.setRecordComm(recordComment);
