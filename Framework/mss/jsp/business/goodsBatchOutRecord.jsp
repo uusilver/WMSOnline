@@ -16,17 +16,17 @@
 		<script type="text/javascript" src="${contextPath}/mss/js/jquery.min.js"></script>
 		<script type="text/javascript">
 		function selectGoods(trId){
-			var url = "/mss/jsp/business/goodsInfoController.do?method=queryGoodsInfoList&accessType=sel&queryTypeState=A&trId="+trId;
+			var url = "${contextPath}/mss/jsp/business/goodsInfoController.do?method=queryGoodsInfoList&accessType=sel&queryTypeState=A&trId="+trId;
 			window.open(url,'','toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=600, height=400,top=100,left=100');
 		}
 		
 		function selectGoods(){
-			var url = "/mss/jsp/business/goodsInfoController.do?method=queryGoodsInfoList&accessType=sel&queryTypeState=A&selectType=outRecord";
+			var url = "${contextPath}/mss/jsp/business/goodsInfoController.do?method=queryGoodsInfoList&accessType=sel&queryTypeState=A&selectType=outRecord";
 			window.open(url,'','toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=600, height=400,top=100,left=100');
 		}
 		
 		function selectClient(){
-			var url = "/mss/jsp/business/clientInfoController.do?method=queryClientInfoList&accessType=sel&queryTypeState=A";
+			var url = "${contextPath}/mss/jsp/business/clientInfoController.do?method=queryClientInfoList&accessType=sel&queryTypeState=A";
 			window.open(url,'','toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=600, height=400,top=100,left=100');
 		}
 		
@@ -170,17 +170,20 @@
 					<td class="qinggoudan_table_title" width="5%">
 						序号
 					</td>
-					<td class="qinggoudan_table_title" width="12%">
+					<td class="qinggoudan_table_title" width="8%">
 						物品名称
+					</td>
+					<td class="qinggoudan_table_title" width="6%">
+						货号
 					</td>
 					<td class="qinggoudan_table_title" width="12%">
 						所属类型
 					</td>
-					<td class="qinggoudan_table_title" width="10%">
+					<td class="qinggoudan_table_title" width="8%">
 						库存数量
 					</td>
 					<td class="qinggoudan_table_title" width="10%">
-						销售单价（预期/实际）
+						销售单价</br>（预期 / 实际）
 					</td>
 					<td class="qinggoudan_table_title" width="10%">
 						出库数量
@@ -197,7 +200,8 @@
 				</tr>
 				<tr id="tempTr" style="display:none;">
 					<td class="qinggoudan_table_td2" id="indexTemp"></td>
-					<td class="qinggoudan_table_td2" width="15%" id="goodsNameTemp"></td>
+					<td class="qinggoudan_table_td2" width="8%" id="goodsNameTemp"></td>
+					<td class="qinggoudan_table_td2" width="6%" id="goodsCodeTemp"></td>
 					<td class="qinggoudan_table_td2" width="10%" id="goodsTypeTemp"></td>
 					<td class="qinggoudan_table_td2" id="leftCountTemp"></td>
 					<td class="qinggoudan_table_td2" id="salePriceTemp"></td>
@@ -207,7 +211,7 @@
 					<td class="qinggoudan_table_td2" id="countTemp"></td>
 				</tr>
 				<tr>
-					<td class="qinggoudan_table_td1" align="right" colspan="9" id="totalMoney"></td>
+					<td class="qinggoudan_table_td1" align="right" colspan="10" id="totalMoney"></td>
 				</tr>
 			</table>
 			<br><br>
@@ -430,9 +434,10 @@
 				var trCount = $("#outRecords").find("tr").length;
 				$("#indexTemp").text((trCount-2));
 				$("#goodsNameTemp").text(goodsName);
+				$("#goodsCodeTemp").text(goodsCode);
 				$("#goodsTypeTemp").text(goodsType);
 				$("#leftCountTemp").text(leftCount);
-				$("#salePriceTemp").text(salePrice+'/'+finalPayPrice);
+				$("#salePriceTemp").text(salePrice+' / '+finalPayPrice);
 				$("#goodsCountTemp").text(goodsCount);
 				if(recordState==0){
 					$("#recordTypeTemp").text("未付款");
