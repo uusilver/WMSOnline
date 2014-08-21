@@ -11,7 +11,7 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<title>物资管理系统</title>
-		<link href="/framework/css/style.css" rel="stylesheet" type="text/css" />
+		<link href="${contextPath}/framework/css/style.css" rel="stylesheet" type="text/css" />
 		<link href="${contextPath}/mss/css/main.css" rel="stylesheet" type="text/css" />
 		<script type="text/javascript" src="${contextPath}/mss/js/userManage.js"></script>
 		<script type="text/javascript" src="${contextPath}/mss/js/tools.js"></script>
@@ -110,7 +110,7 @@
 						&nbsp;&nbsp;&nbsp;&nbsp;
 						<input type="button" class="anniu_out" value=" 返 回 " onMouseOver="className='anniu_over'"
 							onMouseOut="className='anniu_out'"
-							onclick="goList('/mss/jsp/sysManage/userManageController.do?method=queryUserList','quserNum,quserName,quserDept,quserRole,currentPage,viewOrEdit')">
+							onclick="goList('${contextPath}/mss/jsp/sysManage/userManageController.do?method=queryUserList','quserNum,quserName,quserDept,quserRole,currentPage,viewOrEdit')">
 					</td>
 				</tr>
 
