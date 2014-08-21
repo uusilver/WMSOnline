@@ -160,15 +160,13 @@ public class MpmsBoardMsgDAO extends BaseDao {
 
 		List paramList = new ArrayList();
 		if(searchForm.getCreateTime1()!=null && !searchForm.getCreateTime2().equals("")){
-			filterSql.append(" and substr(boardMsg.createTime,0,8)>='" + searchForm.getCreateTime1() + "' ");
-			
-		
+//			filterSql.append(" and substr(boardMsg.createTime,0,8)>='" + searchForm.getCreateTime1() + "' ");
+			filterSql.append(" and substr(boardMsg.createTime,1,8)>='" + searchForm.getCreateTime1() + "' ");
 		}
 		
 		if(searchForm.getCreateTime2()!=null && !searchForm.getCreateTime2().equals("")){
-			filterSql.append(" and substr(boardMsg.createTime,0,8)<='" + searchForm.getCreateTime2() + "' ");
-			
-		
+//			filterSql.append(" and substr(boardMsg.createTime,0,8)<='" + searchForm.getCreateTime2() + "' ");
+			filterSql.append(" and substr(boardMsg.createTime,1,8)<='" + searchForm.getCreateTime2() + "' ");
 		}
 
 		if(searchForm.getMsgInfo()!=null && !searchForm.getMsgInfo().equals("")){
@@ -209,11 +207,13 @@ public class MpmsBoardMsgDAO extends BaseDao {
   
         
 		if(searchForm.getCreateTime1()!=null && !searchForm.getCreateTime1().equals("")){
-			filterSql.append(" and substr(boardMsg.createTime,0,8)>=" + searchForm.getCreateTime1() + " ");			
+//			filterSql.append(" and substr(boardMsg.createTime,0,8)>=" + searchForm.getCreateTime1() + " ");			
+			filterSql.append(" and substr(boardMsg.createTime,1,8)>=" + searchForm.getCreateTime1() + " ");
 		}
 		
 		if(searchForm.getCreateTime2()!=null && !searchForm.getCreateTime2().equals("")){
-			filterSql.append(" and substr(boardMsg.createTime,0,8)<=" + searchForm.getCreateTime2() + " ");
+//			filterSql.append(" and substr(boardMsg.createTime,0,8)<=" + searchForm.getCreateTime2() + " ");
+			filterSql.append(" and substr(boardMsg.createTime,1,8)<=" + searchForm.getCreateTime2() + " ");
 					
 		}
 
