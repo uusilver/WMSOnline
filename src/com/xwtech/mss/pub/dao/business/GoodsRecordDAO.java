@@ -343,7 +343,10 @@ public class GoodsRecordDAO extends BaseDao {
 		List paramList = new ArrayList();
 		// 查询列表sql
 		StringBuffer listHql = new StringBuffer();
-		listHql.append("select goodsRecord.goodsName,goodsRecord.goodsType,goodsRecord.recordType,goodsRecord.recordState,goodsRecord.operator,userInfo.userName,sum(goodsRecord.goodsCount),sum(goodsRecord.goodsProfit),sum(goodsRecord.finalProfit),sum(goodsRecord.goodsCount*goodsRecord.salePrice)" +
+		listHql.append("select goodsRecord.goodsName,goodsRecord.goodsType,goodsRecord.recordType,"
+				+ "goodsRecord.recordState,goodsRecord.operator,userInfo.userName,"
+				+ "sum(goodsRecord.goodsCount),sum(goodsRecord.goodsProfit),"
+				+ "sum(goodsRecord.finalProfit),sum(goodsRecord.goodsCount*goodsRecord.salePrice)" +
 				" from GoodsRecord goodsRecord,UserInfo userInfo ");
 
 
