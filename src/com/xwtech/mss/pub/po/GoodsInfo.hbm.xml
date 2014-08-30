@@ -39,7 +39,7 @@
             <column name="GOODS_PRICE" precision="10" scale="2" />
         </property>
         <property name="wishPrice" type="java.math.BigDecimal">
-            <column name="WISH_PRICE" precision="10" scale="2"  />
+            <column name="SELL_PRICE" precision="10" scale="2"  />
         </property>
         <property name="createTime" type="java.lang.String">
             <column name="CREATE_TIME" length="12" />
