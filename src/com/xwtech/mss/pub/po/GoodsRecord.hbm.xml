@@ -92,6 +92,5 @@
         <property name="fromRecordNum" type="java.lang.Long">
             <column name="FROM_RECORD_NUM" scale="10" />
         </property>
-        
     </class>
 </hibernate-mapping>
