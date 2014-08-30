@@ -227,13 +227,15 @@ public class GoodsInfoDAO extends BaseDao {
 
 		//起始时间
 		if (searchForm.getQueryStartTime() != null && !"".equals(searchForm.getQueryStartTime())) {
-			filterHql.append(" and subStr(goodsInfo.createTime,0,8) >= ?");
+//			filterHql.append(" and subStr(goodsInfo.createTime,0,8) >= ?");
+			filterHql.append(" and subStr(goodsInfo.createTime,1,8) >= ?");
 			paramList.add((Object) (searchForm.getQueryStartTime().replaceAll("-", "")));
 		}
 
 		//截止时间
 		if (searchForm.getQueryEndTime() != null && !"".equals(searchForm.getQueryEndTime())) {
-			filterHql.append(" and subStr(goodsInfo.createTime,0,8) <= ?");
+//			filterHql.append(" and subStr(goodsInfo.createTime,0,8) <= ?");
+			filterHql.append(" and subStr(goodsInfo.createTime,1,8) <= ?");
 			paramList.add((Object) (searchForm.getQueryEndTime().replaceAll("-", "")));
 		}
 		

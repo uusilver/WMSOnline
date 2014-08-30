@@ -6,7 +6,7 @@
 
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<title>物资管理系统</title>
+		<title>物资管理系统 - 日结算报表</title>
 		<link href="${contextPath}/mss/css/main.css" rel="stylesheet" type="text/css" />
 		<script type="text/javascript" src="${contextPath}/mss/js/userManage.js"></script>
 		<script type="text/javascript" src="${contextPath}/mss/js/tools.js"></script>
@@ -15,7 +15,7 @@
 		
 		
 		function selectGoodsType(){
-			var url = "/mss/jsp/business/goodsTypeController.do?method=queryGoodsTypeList&accessType=selectTypeByTree&perPageCount=0";
+			var url = "${contextPath}/mss/jsp/business/goodsTypeController.do?method=queryGoodsTypeList&accessType=selectTypeByTree&perPageCount=0";
 			window.open(url,'','toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=600, height=400,top=100,left=100');
 		}
 		
@@ -66,33 +66,16 @@
 				</tr>
 			</table>
 
-			<table width="95%" border="0" align="center" cellpadding="0" cellspacing="0" class="qinggoudan_table"  style="margin:0px;">
-					<tr>
-					<td class="qinggoudan_table_td1" width="18%">
-						起始日期：<pub:dtp format="yyyy-MM-dd" name="queryStartTime" size="10" styleClass="qinggoudan_input02" value="${information.searchForm.queryStartTime}"/>
-					</td>
-					&nbsp;&nbsp;
-					<td class="qinggoudan_table_td1" width="18%">
-						截止日期：<pub:dtp format="yyyy-MM-dd" name="queryEndTime" size="10" styleClass="qinggoudan_input02" value="${information.searchForm.queryEndTime}"/>
-					</td>
-					<td class="qinggoudan_table_td1" width="18%">
-						付款起始日期：<pub:dtp format="yyyy-MM-dd" name="queryPayStartTime" size="10" styleClass="qinggoudan_input02" value="${information.searchForm.queryPayStartTime}"/>
-					</td>
-					&nbsp;&nbsp;
-					<td class="qinggoudan_table_td1" width="18%">
-						付款截止日期：<pub:dtp format="yyyy-MM-dd" name="queryPayEndTime" size="10" styleClass="qinggoudan_input02" value="${information.searchForm.queryPayEndTime}"/>
-					</td>
-					<td class="qinggoudan_table_td1" width="32%">
-						所属类别:
-						<input name="queryGoodsType" id="goods_type" type="text" class="qinggoudan_input023" size="40"
-							value="${information.searchForm.queryGoodsType}" maxlength="50" readonly="readonly"/>
-							&nbsp;
-							<input type="hidden" name="goodsTypeStr" id="goodsTypeStr" value="${information.searchForm.queryGoodsTypeStr}"/>
-						<input type="button" class="anniu_s_out" value=" 选择 " onMouseOver="className='anniu_s_over'"
-							onMouseOut="className='anniu_s_out'" onclick="selectGoodsType()">
-					</td>
-				</tr>
+			<table width="95%" style="border-style:dashed;border-width:1px; border-color:#999999;" align="center" cellpadding="0" cellspacing="0" class="qinggoudan_table"  style="margin:0px;">
 				<tr>
+					<td class="qinggoudan_table_td1" width="16%">
+						起始日期:<pub:dtp format="yyyy-MM-dd" name="queryStartTime" size="10" styleClass="qinggoudan_input02" value="${information.searchForm.queryStartTime}"/>
+					</td>
+					&nbsp;&nbsp;
+					<td class="qinggoudan_table_td1" width="20%">
+						付款起始日期:<pub:dtp format="yyyy-MM-dd" name="queryPayStartTime" size="10" styleClass="qinggoudan_input02" value="${information.searchForm.queryPayStartTime}"/>
+					</td>
+					&nbsp;&nbsp;
 					<td class="qinggoudan_table_td1">
 						物品名称:
 						<input name="queryGoodsName" type="text" class="qinggoudan_input023" size="10"
@@ -127,22 +110,40 @@
 						</c:if>
 						</select>
 					</td>
-					<td class="qinggoudan_table_td1" width="9%">
-						操作人:
-						<pub:link sql="<%=SpmsConstants.QUERY_USER_INFO%>" num="1" title="---请选择---"
-							next="false" name="queryOperator" mvalue="${information.searchForm.queryOperator}" />
-					</td>
 					<td class="qinggoudan_table_td1">
 						客户昵称:
 						<input name="queryClientNick" type="text" class="qinggoudan_input02" size="10"
 							value="${information.searchForm.queryClientNick}" maxlength="50" />
 					</td>
-					<td class="qinggoudan_table_td1">
-						<input type="button" class="anniu_out" value=" 搜 索 " onMouseOver="className='anniu_over'"
-							onMouseOut="className='anniu_out'" onclick="query()">
+				</tr>
+				<tr>
+					<td class="qinggoudan_table_td01" width="16%">
+						截止日期:<pub:dtp format="yyyy-MM-dd" name="queryEndTime" size="10" styleClass="qinggoudan_input02" value="${information.searchForm.queryEndTime}"/>
+					</td>
+					&nbsp;&nbsp;
+					<td class="qinggoudan_table_td01" width="18%">
+						付款截止日期:<pub:dtp format="yyyy-MM-dd" name="queryPayEndTime" size="10" styleClass="qinggoudan_input02" value="${information.searchForm.queryPayEndTime}"/>
+					</td>
+					<td class="qinggoudan_table_td01" width="30%">
+						所属类别:
+						<input name="queryGoodsType" id="goods_type" type="text" class="qinggoudan_input023" size="40"
+							value="${information.searchForm.queryGoodsType}" maxlength="50" readonly="readonly"/>
+							&nbsp;
+							<input type="hidden" name="goodsTypeStr" id="goodsTypeStr" value="${information.searchForm.queryGoodsTypeStr}"/>
+						<input type="button" class="anniu_s_out" value="选  择" onMouseOver="className='anniu_s_over'"
+							onMouseOut="className='anniu_s_out'" onclick="selectGoodsType()">
+					</td>
+					<td class="qinggoudan_table_td01" width="9%">
+						操 作 人:
+						<pub:link sql="<%=SpmsConstants.QUERY_USER_INFO%>" num="1" title="---请选择---"
+							next="false" name="queryOperator" mvalue="${information.searchForm.queryOperator}" />
+					</td>
+					<td class="qinggoudan_table_td01">
+						<input type="button" class="anniu_s_out" value="搜   索 " onMouseOver="className='anniu_s_out'"
+							onMouseOut="className='anniu_s_out'" onclick="query()">
 						&nbsp;&nbsp;&nbsp;&nbsp;
-						<input type="button" onclick="resetQuery('goodsRecordStatisticForm')" class="anniu_out" value=" 重 填 "
-							onMouseOver="className='anniu_over'" onMouseOut="className='anniu_out'">
+						<input type="button" onclick="resetQuery('goodsRecordStatisticForm')" class="anniu_s_out" value="重   填 "
+							onMouseOver="className='anniu_s_out'" onMouseOut="className='anniu_s_out'">
 					</td>
 				</tr>
 			</table>
@@ -152,7 +153,7 @@
 				style="margin:0px;">
 				<tr>
 					<td>
-						<a style="color:red;">金额计算基本公式：盈利金额（毛利）= 出库金额  - 入库金额 - 退库金额</a>
+						<a style="color:red;">金额计算基本公式:盈利金额（毛利）= 出库金额  - 入库金额 - 退库金额</a>
 					</td>
 				</tr>
 				<tr>
@@ -162,17 +163,17 @@
 				</tr>
 				<tr>
 					<td>
-						<a style="color:orange;">预期净利润：操作数量*（销售单价 - 成本单价）</a>
+						<a style="color:orange;">预期净利润:操作数量*（销售单价 - 成本单价）</a>
 					</td>
 				</tr>
 				<tr>
 					<td>
-						<a style="color:green;">实际净利润：操作数量*（顾客实际支付单价 - 成本单价）</a>
+						<a style="color:green;">实际净利润:操作数量*（顾客实际支付单价 - 成本单价）</a>
 					</td>
 				</tr>
 				</table>
 				<br/>
-			<table width="95%" border="0" align="center" cellpadding="0" cellspacing="0" class="qinggoudan_table"
+			<table width="95%" align="center" cellpadding="0" cellspacing="0" class="qinggoudan_table"
 				style="margin:0px;">
 				<tr>
 					<td width="5%" class="qinggoudan_table_title">
@@ -324,35 +325,35 @@
 				<tr>
 				<td class="qinggoudan_table_td2">合计</td>
 					<td class="qinggoudan_table_td2">
-							总金额：<fmt:formatNumber  value="${totalSalesVolume}"  pattern="#,#00.00#"/>&nbsp;元
+							总金额:<fmt:formatNumber  value="${totalSalesVolume}"  pattern="#,#00.00#"/>&nbsp;元
 							<table>
 								<tr>
-									<td>已付款：<fmt:formatNumber  value="${totalSalesVolumePayed}"  pattern="#,#00.00#"/></td>
+									<td>已付款:<fmt:formatNumber  value="${totalSalesVolumePayed}"  pattern="#,#00.00#"/></td>
 								</tr>
 								<tr>
-									<td><a style="color:red;">未付款：<fmt:formatNumber  value="${totalSalesVolumeNotPayed}"  pattern="#,#00.00#"/></a></td>
+									<td><a style="color:red;">未付款:<fmt:formatNumber  value="${totalSalesVolumeNotPayed}"  pattern="#,#00.00#"/></a></td>
 								</tr>
 							</table>
 						</td>
 						<td class="qinggoudan_table_td2">
-							预期净利润总计：<fmt:formatNumber  value="${totalExpProfit}"  pattern="#,#00.00#"/>&nbsp;元
+							预期净利润总计:<fmt:formatNumber  value="${totalExpProfit}"  pattern="#,#00.00#"/>&nbsp;元
 							<table>
 								<tr>
-									<td>已付款：<fmt:formatNumber  value="${totalExpProfitPayed}"  pattern="#,#00.00#"/></td>
+									<td>已付款:<fmt:formatNumber  value="${totalExpProfitPayed}"  pattern="#,#00.00#"/></td>
 								</tr>
 								<tr>
-									<td><a style="color:red;">未付款：<fmt:formatNumber  value="${totalExpProfitNotPayed}"  pattern="#,#00.00#"/></a></td>
+									<td><a style="color:red;">未付款:<fmt:formatNumber  value="${totalExpProfitNotPayed}"  pattern="#,#00.00#"/></a></td>
 								</tr>
 							</table>
 						</td>
 						<td class="qinggoudan_table_td2">
-							实际净利润总计：<fmt:formatNumber  value="${totalRealProfit}"  pattern="#,#00.00#"/>&nbsp;元
+							实际净利润总计:<fmt:formatNumber  value="${totalRealProfit}"  pattern="#,#00.00#"/>&nbsp;元
 							<table>
 								<tr>
-									<td>已付款：<fmt:formatNumber  value="${totalRealProfitPayed}"  pattern="#,#00.00#"/></td>
+									<td>已付款:<fmt:formatNumber  value="${totalRealProfitPayed}"  pattern="#,#00.00#"/></td>
 								</tr>
 								<tr>
-									<td><a style="color:red;">未付款：<fmt:formatNumber  value="${totalRealProfitNotPayed}"  pattern="#,#00.00#"/></a></td>
+									<td><a style="color:red;">未付款:<fmt:formatNumber  value="${totalRealProfitNotPayed}"  pattern="#,#00.00#"/></a></td>
 								</tr>
 							</table>
 						</td>
@@ -362,7 +363,7 @@
 			<table width="95%" border="0" align="center" cellpadding="0" cellspacing="0">
 					<tr>
 						<td align="center">
-							<input type="button" class="anniu_out" value=" 打印报表  " onclick="window.print();" onMouseOver="className='anniu_over'"
+							<input type="button" class="anniu_out" value="打 印 报 表" onclick="window.print();" onMouseOver="className='anniu_over'"
 								onMouseOut="className='anniu_out'">
 						</td>
 					</tr>

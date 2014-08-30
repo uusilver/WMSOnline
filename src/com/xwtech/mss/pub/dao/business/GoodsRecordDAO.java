@@ -248,13 +248,15 @@ public class GoodsRecordDAO extends BaseDao {
 
 		//起始时间
 		if (searchForm.getQueryStartTime() != null && !"".equals(searchForm.getQueryStartTime())) {
-			filterHql.append(" and subStr(goodsRecord.createTime,0,8) >= ?");
+//			filterHql.append(" and subStr(goodsRecord.createTime,0,8) >= ?");
+			filterHql.append(" and subStr(goodsRecord.createTime,1,8) >= ?");
 			paramList.add((Object) (searchForm.getQueryStartTime().replaceAll("-", "")));
 		}
 
 		//截止时间
 		if (searchForm.getQueryEndTime() != null && !"".equals(searchForm.getQueryEndTime())) {
-			filterHql.append(" and subStr(goodsRecord.createTime,0,8) <= ?");
+//			filterHql.append(" and subStr(goodsRecord.createTime,0,8) <= ?");
+			filterHql.append(" and subStr(goodsRecord.createTime,1,8) <= ?");
 			paramList.add((Object) (searchForm.getQueryEndTime().replaceAll("-", "")));
 		}
 
@@ -341,7 +343,10 @@ public class GoodsRecordDAO extends BaseDao {
 		List paramList = new ArrayList();
 		// 查询列表sql
 		StringBuffer listHql = new StringBuffer();
-		listHql.append("select goodsRecord.goodsName,goodsRecord.goodsType,goodsRecord.recordType,goodsRecord.recordState,goodsRecord.operator,userInfo.userName,sum(goodsRecord.goodsCount),sum(goodsRecord.goodsProfit),sum(goodsRecord.finalProfit),sum(goodsRecord.goodsCount*goodsRecord.salePrice)" +
+		listHql.append("select goodsRecord.goodsName,goodsRecord.goodsType,goodsRecord.recordType,"
+				+ "goodsRecord.recordState,goodsRecord.operator,userInfo.userName,"
+				+ "sum(goodsRecord.goodsCount),sum(goodsRecord.goodsProfit),"
+				+ "sum(goodsRecord.finalProfit),sum(goodsRecord.goodsCount*goodsRecord.salePrice)" +
 				" from GoodsRecord goodsRecord,UserInfo userInfo ");
 
 
@@ -351,13 +356,15 @@ public class GoodsRecordDAO extends BaseDao {
 
 		//起始时间
 		if (searchForm.getQueryStartTime() != null && !"".equals(searchForm.getQueryStartTime())) {
-			filterHql.append(" and subStr(goodsRecord.createTime,0,8) >= ?");
+//			filterHql.append(" and subStr(goodsRecord.createTime,0,8) >= ?");
+			filterHql.append(" and subStr(goodsRecord.createTime,1,8) >= ?");
 			paramList.add((Object) (searchForm.getQueryStartTime().replaceAll("-", "")));
 		}
 
 		//截止时间
 		if (searchForm.getQueryEndTime() != null && !"".equals(searchForm.getQueryEndTime())) {
-			filterHql.append(" and subStr(goodsRecord.createTime,0,8) <= ?");
+//			filterHql.append(" and subStr(goodsRecord.createTime,0,8) <= ?");
+			filterHql.append(" and subStr(goodsRecord.createTime,1,8) <= ?");
 			paramList.add((Object) (searchForm.getQueryEndTime().replaceAll("-", "")));
 		}
 

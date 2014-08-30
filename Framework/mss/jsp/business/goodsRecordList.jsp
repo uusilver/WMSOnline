@@ -87,9 +87,9 @@
 				</tr>
 			</table>
 
-			<table width="95%" border="0" align="center" cellpadding="0" cellspacing="0" class="qinggoudan_table"  style="margin:0px;">
+			<table width="95%" style="border-style:dashed;border-width:1px; border-color:#999999;" align="center" cellpadding="0" cellspacing="0" class="qinggoudan_table"  style="margin:0px;">
 				<tr>
-					<td class="qinggoudan_table_td1" width="16%">
+					<td class="qinggoudan_table_td1">
 						流水类型:
 						<select name="queryRecordType">
 						<c:if test="${information.searchForm.queryRecordType!='1'&&information.searchForm.queryRecordType!='2'&&information.searchForm.queryRecordType!='3'}">
@@ -159,34 +159,34 @@
 						<input name="queryClientNick" type="text" class="qinggoudan_input02" size="10"
 							value="${information.searchForm.queryClientNick}" maxlength="50" />
 					</td>
-					<td class="qinggoudan_table_td1" width="32%" colspan="2">
+					<td class="qinggoudan_table_td1" width="34%" colspan="2">
 						所属类别:
-						<input name="queryGoodsType" id="goods_type" type="text" class="qinggoudan_input023" size="40"
+						<input name="queryGoodsType" id="goods_type" type="text" class="qinggoudan_input023" size="35"
 							value="${information.searchForm.queryGoodsType}" maxlength="50" readonly="readonly"/>
 							&nbsp;
 							<input type="hidden" name="goodsTypeStr" id="goodsTypeStr" value="${information.searchForm.queryGoodsTypeStr}"/>
-						<input type="button" class="anniu_s_out" value=" 选择 " onMouseOver="className='anniu_s_over'"
+						<input type="button" class="anniu_s_out" value="选  择" onMouseOver="className='anniu_s_over'"
 							onMouseOut="className='anniu_s_out'" onclick="selectGoodsType()">
 					</td>
 					</tr>
 					<tr>
 					<td class="qinggoudan_table_td1" width="12%">
-						操作人:
+						操 作 人:
 						<pub:link sql="<%=SpmsConstants.QUERY_USER_INFO%>" num="1" title="---请选择---"
 							next="false" name="queryOperator" mvalue="${information.searchForm.queryOperator}" />
 					</td>
 					<td class="qinggoudan_table_td1" width="12%">
-						修改人:
+						修 改 人:
 						<pub:link sql="<%=SpmsConstants.QUERY_USER_INFO%>" num="1" title="---请选择---"
 							next="false" name="queryModifier" mvalue="${information.searchForm.queryOperator}" />
 					</td>
-					<td class="qinggoudan_table_td1" width="19%">
-						起始日期：<pub:dtp format="yyyy-MM-dd" name="queryStartTime" size="10" styleClass="qinggoudan_input02" value="${information.searchForm.queryStartTime}"/>
+					<td class="qinggoudan_table_td1" width="12%">
+						起始日期:<pub:dtp format="yyyy-MM-dd" name="queryStartTime" size="10" styleClass="qinggoudan_input02" value="${information.searchForm.queryStartTime}"/>
 					</td>
-					<td class="qinggoudan_table_td1" width="18%">
-						截至日期：<pub:dtp format="yyyy-MM-dd" name="queryEndTime" size="10" styleClass="qinggoudan_input02" value="${information.searchForm.queryEndTime}"/>
+					<td class="qinggoudan_table_td1" width="12%">
+						截至日期:<pub:dtp format="yyyy-MM-dd" name="queryEndTime" size="10" styleClass="qinggoudan_input02" value="${information.searchForm.queryEndTime}"/>
 					</td>
-					<td class="qinggoudan_table_td1" width="7%">
+					<td class="qinggoudan_table_td1" width="8%">
 					<input type="checkbox" id="isStatistic" class="qinggoudan_input011"/>统计金额
 					</td>
 					<td class="qinggoudan_table_td1" width="13%">
@@ -210,17 +210,17 @@
 							</select>
 						</td>
 				</tr>
-				<tr>
-					<td class="qinggoudan_table_td1" colspan="6">
-						<input type="button" class="anniu_out" value=" 搜 索 " onMouseOver="className='anniu_over'"
-							onMouseOut="className='anniu_out'" onclick="query()">
+				<tr align="center">
+					<td class="qinggoudan_table_td01" colspan="6">
+						<input type="button" class="anniu_s_out" value=" 搜 索 " onMouseOver="className='anniu_s_out'"
+							onMouseOut="className='anniu_s_out'" onclick="query()">
 						&nbsp;&nbsp;&nbsp;&nbsp;
-						<input type="button" onclick="resetQuery('goodsRecordListForm')" class="anniu_out" value=" 重 填 "
-							onMouseOver="className='anniu_over'" onMouseOut="className='anniu_out'">
+						<input type="button" onclick="resetQuery('goodsRecordListForm')" class="anniu_s_out" value=" 重 填 "
+							onMouseOver="className='anniu_s_out'" onMouseOut="className='anniu_s_out'">
 					</td>
 				</tr>
 			</table>
-
+		
 			<table width="95%" border="0" align="center" cellpadding="0" cellspacing="0" class="qinggoudan_table"
 				style="margin:0px;">
 				<tr>
@@ -272,7 +272,8 @@
 				</tr>
 					<c:set var="totalMoney" value="0"></c:set>
 				<c:forEach var="goodsRecord" items="${information.goodsRecordList}" varStatus="status">
-						<tr <c:if test="${goodsRecord.recordType eq 2 && (goodsRecord.clientConfirm=='N'||goodsRecord.clientConfirm==null)}">bgcolor="#ffbf74"</c:if>>
+						<!-- <tr <c:if test="${goodsRecord.recordType eq 2 && (goodsRecord.clientConfirm=='N'||goodsRecord.clientConfirm==null)}">bgcolor="#ffbf74"</c:if>>-->
+						<tr <c:if test="${status.index%2==0}"> bgcolor="#EAE7E7"</c:if>>
 						<td class="qinggoudan_table_td2">
 							&nbsp;${status.index+1}
 						</td>
@@ -314,7 +315,7 @@
 						</td>
 						<td class="qinggoudan_table_td2">
 							<c:if test="${goodsRecord.recordState=='0'}">
-								未付款
+								<p style="color: #FF1C1C;">未付款</p>
 							</c:if>
 							<c:if test="${goodsRecord.recordState=='1'}">
 								已付款

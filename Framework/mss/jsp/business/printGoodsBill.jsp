@@ -39,7 +39,7 @@
 				</tr>
 			</table>
 
-			<table width="95%" border="0" align="center" cellpadding="0" cellspacing="0" class="qinggoudan_table"  style="margin:0px;">
+			<table width="95%" style="border-style:dashed;border-width:1px; border-color:#999999;" align="center" cellpadding="0" cellspacing="0" class="qinggoudan_table"  style="margin:0px;">
 				<tr>
 					<td class="qinggoudan_table_td1" width="18%">
 						单据类型:
@@ -85,18 +85,18 @@
 					</td>
 					</tr>
 					<tr>
-					<td class="qinggoudan_table_td1" width="15%">
-						起始日期：<pub:dtp format="yyyy-MM-dd" name="queryStartTime" size="10" styleClass="qinggoudan_input02" value="${information.searchForm.queryStartTime}"/>
+					<td class="qinggoudan_table_td01" width="15%">
+						起始日期:<pub:dtp format="yyyy-MM-dd" name="queryStartTime" size="10" styleClass="qinggoudan_input02" value="${information.searchForm.queryStartTime}"/>
 					</td>
-					<td class="qinggoudan_table_td1" width="20%">
-						截至日期：<pub:dtp format="yyyy-MM-dd" name="queryEndTime" size="10" styleClass="qinggoudan_input02" value="${information.searchForm.queryEndTime}"/>
+					<td class="qinggoudan_table_td01" width="20%">
+						截至日期:<pub:dtp format="yyyy-MM-dd" name="queryEndTime" size="10" styleClass="qinggoudan_input02" value="${information.searchForm.queryEndTime}"/>
 					</td>
-					<td class="qinggoudan_table_td1" colspan="3">
-						<input type="button" class="anniu_out" value=" 搜 索 " onMouseOver="className='anniu_over'"
-							onMouseOut="className='anniu_out'" onclick="query()">
+					<td class="qinggoudan_table_td01" colspan="3">
+						<input type="button" class="anniu_s_out" value="搜  索 " onMouseOver="className='anniu_s_out'"
+							onMouseOut="className='anniu_s_out'" onclick="query()">
 						&nbsp;&nbsp;&nbsp;&nbsp;
-						<input type="button" onclick="resetQuery('goodsRecordBillForm')" class="anniu_out" value=" 重 填 "
-							onMouseOver="className='anniu_over'" onMouseOut="className='anniu_out'">
+						<input type="button" onclick="resetQuery('goodsRecordBillForm')" class="anniu_s_out" value="重  填 "
+							onMouseOver="className='anniu_s_out'" onMouseOut="className='anniu_s_out'">
 					</td>
 				</tr>
 			</table>
