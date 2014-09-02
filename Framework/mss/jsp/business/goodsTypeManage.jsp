@@ -138,7 +138,7 @@
 <body>
       <table>
 		<tr>
-			<td valign="top">&nbsp; 
+			<td valign="top"> 
 				<div id="treeboxbox_tree" style="width:320px; height:730px;background-color:#f5f5f5;border :1px solid Silver;; overflow:auto;"></div>
 				<div id="loadBranch" style="position:absolute;visibility:hidden;background:gray;filter:alpha(opacity=30);z-index:1000;left:12;top:74;width:320px;height:430px;">
 					<table height="100%" align="center"  cellpadding="0" cellspacing="0">
@@ -148,34 +148,37 @@
 					</table>
 				</div>
 			</td>
-			<td class="qinggoudan_title01_font01" bgcolor="#C1E0FF" align="left">
-			类别名称：<input type="text" class="qinggoudan_input023" value="" id="type_name">
+			<td></td>
+			<td class="qinggoudan_title01_font01" bgcolor="#C1E0FF" valign="top">
+			类&nbsp;别&nbsp;名&nbsp;称:<input type="text" class="qinggoudan_input023" value="" id="type_name">
 			&nbsp;&nbsp;&nbsp;&nbsp;
-			缩写：
+			缩写:
 			<input type="text" class="qinggoudan_input023" value="" id="type_name_short">
 			<input type="checkbox" id="rootItem" class="qinggoudan_input011"/>(添加根目录)
 			&nbsp;&nbsp;&nbsp;&nbsp;
 			<input type="button" class="anniu_s_out" name="saveBtn" value="添加新类别" onMouseOver="className='anniu_s_over'" onMouseOut="className='anniu_s_out'" onClick="addNextItem();"/>
 			<br><br>
-			子类别名称：
+			子类别名称:
 			<input type="text" class="qinggoudan_input023" value="" id="type_name_child">
 			&nbsp;&nbsp;&nbsp;&nbsp;
-			缩写：
+			缩写:
 			<input type="text" class="qinggoudan_input023" value="" id="type_name_child_short">
 			&nbsp;&nbsp;&nbsp;&nbsp;
 			<input type="button" class="anniu_s_out" name="saveBtn" value="添加子类别" onMouseOver="className='anniu_s_out'" onMouseOut="className='anniu_s_out'" onClick="addChildItem();"/>
 			
 			<br><br>
-			类别名称：
-			<input type="text" class="qinggoudan_input023" value="" id="type_name_edit">
+			类&nbsp;别&nbsp;名&nbsp;称:<input type="text" class="qinggoudan_input023" value="" id="type_name_edit">
 			&nbsp;&nbsp;&nbsp;&nbsp;
-			缩写：
+			缩写:
 			<input type="text" class="qinggoudan_input023" value="" id="type_name_edit_short">
 			&nbsp;&nbsp;&nbsp;&nbsp;
 			<input type="button" class="anniu_s_out" name="saveBtn" value="编辑类别" onMouseOver="className='anniu_s_out'" onMouseOut="className='anniu_s_out'" onClick="updateItem();"/>
-						
+					
 			<br><br>
-			<a href="javascript:void(0);" onClick="deleteItem();">删除节点&nbsp;&nbsp;&nbsp;&nbsp;(请选中要删除的节点)</a>
+			
+			<input type="button" class="anniu_s_out" name="delBtn" value="删除节点" onMouseOver="className='anniu_s_out'" onMouseOut="className='anniu_s_out'" onClick="deleteItem();"/>
+			<p>(请选中要删除的节点)</p>
+			<!-- a href="javascript:void(0);" onClick="deleteItem();">删除节点&nbsp;&nbsp;&nbsp;&nbsp;(请选中要删除的节点)</a> -->
 			
 			</td>
 		</tr>

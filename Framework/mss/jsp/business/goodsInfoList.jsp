@@ -149,7 +149,7 @@
 					</td>
 					<c:if test="${information.accessType==null||information.accessType==''||information.accessType=='menu'}">
 						<td class="qinggoudan_table_td1" width="15%">
-							状态:
+							状&nbsp;&nbsp;态:
 							<pub:link sql="<%=SpmsConstants.QUERY_ROLE_STATE%>" num="1" title="---请选择---" next="false" name="queryGoodsState"
 								mvalue="${information.searchForm.queryGoodsState}" />
 						</td>
@@ -166,10 +166,10 @@
 					</tr>
 					<tr>
 					<td class="qinggoudan_table_td1" width="15%">
-						起始日期：<pub:dtp format="yyyy-MM-dd" name="queryStartTime" size="10" styleClass="qinggoudan_input02" value="${information.searchForm.queryStartTime}"/>
+						起始日期:<pub:dtp format="yyyy-MM-dd" name="queryStartTime" size="10" styleClass="qinggoudan_input02" value="${information.searchForm.queryStartTime}"/>
 					</td>
 					<td class="qinggoudan_table_td1" width="20%">
-						截至日期：<pub:dtp format="yyyy-MM-dd" name="queryEndTime" size="10" styleClass="qinggoudan_input02" value="${information.searchForm.queryEndTime}"/>
+						截至日期:<pub:dtp format="yyyy-MM-dd" name="queryEndTime" size="10" styleClass="qinggoudan_input02" value="${information.searchForm.queryEndTime}"/>
 					</td>
 					<td class="qinggoudan_table_td1">
 						<c:if test="${information.accessType eq 'menu'||information.accessType eq ''}">
