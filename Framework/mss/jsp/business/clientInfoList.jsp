@@ -297,7 +297,7 @@
 
 			<input type="hidden" name="viewOrEdit" value="${information.searchForm.viewOrEdit}" />
 
-			<input type="hidden" name="accessType" value="${information.accessType=='menu' ? '':information.accessType}" />
+			<input type="hidden" name="accessType" value="${information.accessType}" />
 
 		</form>
 

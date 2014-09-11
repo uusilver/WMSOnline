@@ -220,7 +220,7 @@ public class ClientInfoController extends MultiActionController {
 		map.put(RequestNameConstants.TOTAL_PAGE, goodsTypeResult.get(RequestNameConstants.TOTAL_PAGE));
 		map.put(RequestNameConstants.CURRENT_PAGE, goodsTypeResult.get(RequestNameConstants.CURRENT_PAGE));
 		map.put("searchForm", clientInfoForm);
-		map.put("accessType", accessType);
+		map.put("accessType", ("menu".equals(accessType) ? "" : accessType));
 
 		return new ModelAndView("/mss/jsp/business/clientInfoList.jsp", RequestNameConstants.INFORMATION, map);
 		
