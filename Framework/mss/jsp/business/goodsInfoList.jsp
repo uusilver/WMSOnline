@@ -235,7 +235,7 @@
 				</tr>
 				<c:set var="totalMoney" value="0"></c:set>
 				<c:forEach var="goodsInfo" items="${information.goodsInfoList}" varStatus="status">
-					<tr>
+					<tr <c:if test="${(status.index+1)%2==0}"> bgcolor="#F0FFF0"</c:if>>
 						<td class="qinggoudan_table_td2">
 							&nbsp;${status.index+1}
 						</td>

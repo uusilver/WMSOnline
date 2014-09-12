@@ -273,7 +273,7 @@
 					<c:set var="totalMoney" value="0"></c:set>
 				<c:forEach var="goodsRecord" items="${information.goodsRecordList}" varStatus="status">
 						<!-- <tr <c:if test="${goodsRecord.recordType eq 2 && (goodsRecord.clientConfirm=='N'||goodsRecord.clientConfirm==null)}">bgcolor="#ffbf74"</c:if>>-->
-						<tr <c:if test="${status.index%2==0}"> bgcolor="#EAE7E7"</c:if>>
+						<tr <c:if test="${(status.index+1)%2==0}"> bgcolor="#F0FFF0"</c:if>>
 						<td class="qinggoudan_table_td2">
 							&nbsp;${status.index+1}
 						</td>

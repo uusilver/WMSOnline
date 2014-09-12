@@ -201,7 +201,7 @@
 
 				<c:if test="${information.menuList != null}">
 					<c:forEach items="${information.menuList }" var="info" varStatus="order">
-						<tr>
+						<tr <c:if test="${(order.index+1)%2==0}"> bgcolor="#F0FFF0"</c:if>>
 							<td class="qinggoudan_table_td2">
 								<input type="checkbox" name="resourceId" class="qinggoudan_input011" value="${info.menuId}" ${info.menuState=='A' ? '' : 'disabled'}>
 							</td>

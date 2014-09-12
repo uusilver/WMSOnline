@@ -80,7 +80,7 @@
 					</td>
 				</tr>
 				<c:forEach var="roleInfo" items="${information.resultList}" varStatus="status">
-					<tr>
+					<tr <c:if test="${(status.index+1)%2==0}"> bgcolor="#F0FFF0"</c:if>>
 						<td class="qinggoudan_table_td2">
 							<input type="checkbox" name="roleChk" class="qinggoudan_input011" value="${roleInfo.roleId}" ${roleInfo.state=='A' ? '' : 'disabled'}>
 						</td>

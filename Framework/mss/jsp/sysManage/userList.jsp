@@ -133,7 +133,7 @@
 					</c:if>
 				</tr>
 				<c:forEach var="userInfo" items="${information.userList}" varStatus="status">
-					<tr>
+					<tr <c:if test="${(status.index+1)%2==0}"> bgcolor="#F0FFF0"</c:if>>
 						<td class="qinggoudan_table_td2">
 							<c:if test="${information.searchForm.viewOrEdit!=null&&information.searchForm.viewOrEdit=='edit'}">
 								<input type="checkbox" class="qinggoudan_input011" name="userChk" value="${userInfo.userId}"
