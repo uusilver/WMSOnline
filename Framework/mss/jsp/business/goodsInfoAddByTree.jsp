@@ -355,11 +355,11 @@
 			}
 			goodsCode += shortName;
 			goodsType += itemText;
-			if(i<len-1){
+			if(i<(len-1)){
 				goodsType += ',';
 			}
 		}
-		
+		alert(goodsType + '----'+goodsTypeCheck);
 		var codeNum = getSameGoodsCount(goodsTypeCheck);
 		var prefix = "";
 		if(codeNum.length<5){
